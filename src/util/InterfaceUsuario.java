@@ -26,6 +26,7 @@ public class InterfaceUsuario {
                     System.out.println("\nOcorreu um erro, digite um valor positivo");
                 }
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -52,6 +53,7 @@ public class InterfaceUsuario {
                     System.out.println("\nOcorreu um erro, digite um valor positivo");
                 }
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -82,6 +84,7 @@ public class InterfaceUsuario {
                 }
 
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -95,7 +98,7 @@ public class InterfaceUsuario {
 
         while(!controle) {
             try {
-                System.out.println("\nDigite o tamanho do terreno (em m²");
+                System.out.println("\nDigite o tamanho do terreno (em m²)");
                 tamanhoTerreno = scanner.nextInt();
 
                 if (tamanhoTerreno > 1) {
@@ -107,6 +110,7 @@ public class InterfaceUsuario {
                 }
 
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -128,6 +132,7 @@ public class InterfaceUsuario {
                 controle = true;
 
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, Tente novamente");
                 scanner.nextLine();
             }
@@ -143,7 +148,7 @@ public class InterfaceUsuario {
 
         while(!controle) {
             try {
-                System.out.println("\nDigite o tamanho da área contruída da casa (em m²");
+                System.out.println("\nDigite o tamanho da área contruída da casa (em m²)");
                 areaDeConstrucao = scanner.nextInt();
 
                 if (areaDeConstrucao > 1) {
@@ -155,6 +160,7 @@ public class InterfaceUsuario {
                 }
 
             } catch (InputMismatchException e) {
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -182,6 +188,7 @@ public class InterfaceUsuario {
                 }
 
             }catch (InputMismatchException e){
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
@@ -209,6 +216,7 @@ public class InterfaceUsuario {
                 }
 
             }catch (InputMismatchException e){
+                System.out.println(e.getMessage());
                 System.out.println("\nEntrada invalida, digite um número");
                 scanner.nextLine();
             }
