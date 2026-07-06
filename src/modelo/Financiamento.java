@@ -1,6 +1,6 @@
 package modelo;
 
-public class Financiamento {
+public abstract class Financiamento {
     private double valorImovel;
     private int prazoFinanciamento;
     private double taxaJurosAnual;
@@ -15,20 +15,13 @@ public class Financiamento {
         return prazoFinanciamento * 12;
     }
 
-    public double valorMensalidade() {
-        return (valorImovel / quantidadeParcelas()) * (1 + (taxaJurosAnual / 12));
-    }
+    public abstract double valorMensalidade();
 
     public double valorTotal(){
         return valorMensalidade() * quantidadeParcelas();
     }
 
-    public void exibirMensagem(){
-        System.out.println("Valor do imóvel : " + String.format("%.2f", valorImovel) +
-                "\nValor da parcela : " + String.format("%.2f", valorMensalidade()) +
-                "\nQuantidade de parcelas : " + quantidadeParcelas() +
-                "\nValor total financiamento : " + String.format("%.2f", valorTotal()) + "\n");
-    }
+    public abstract void exibirMensagem();
 
     public double getValorImovel() {
         return valorImovel;
