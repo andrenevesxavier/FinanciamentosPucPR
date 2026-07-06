@@ -1,5 +1,7 @@
 package modelo;
 
+import Exeptions.AumentoMaiorDoQueJurosException;
+
 public class Casa extends Financiamento {
 
     private final double TAXA = 240;
@@ -13,9 +15,18 @@ public class Casa extends Financiamento {
         this.areaConstruida = areaConstruida;
     }
 
+
+
     @Override
     public double valorMensalidade() {
-        valorParcela = (getValorImovel() / quantidadeParcelas()* (1 + (getTaxaJurosAnual() / 12))) + TAXA;
+        var valorParcelaSemJuros = getValorImovel() / quantidadeParcelas();
+        valorParcela = valorParcelaSemJuros * (1 + (getTaxaJurosAnual() / 12)) + TAXA;
+        var jurosParcela = valorParcela - valorParcelaSemJuros;
+
+        if (jurosParcela / 2 < TAXA){
+            throw new AumentoMaiorDoQueJurosException ("A taxa está muito elevada para essa parcela");
+        }
+
         return valorParcela;
     }
 
