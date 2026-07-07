@@ -16,7 +16,7 @@ public class InterfaceUsuario {
 
         while(!controle){
             try {
-                System.out.println("\nDigite o valor do imóvel");
+                System.out.println("\nDigite o valor");
                 valorImovel = scanner.nextDouble();
 
                 if (valorImovel > 0) {
@@ -71,6 +71,7 @@ public class InterfaceUsuario {
             try {
                 System.out.println("\nDigite a taxa de Juros (taxa anual)");
                 taxa = scanner.nextDouble();
+                scanner.nextLine();
 
                 if (taxa > LIMITE_LEGAL_ANUAL) {
                     System.out.println("Taxa excede o limite permitido (Limite permitido = 50% ao ano)");
@@ -128,7 +129,7 @@ public class InterfaceUsuario {
 
             try {
                 System.out.println("\nDigite o tipo de area onde o terreno fica localizado (residencial ou comercial)");
-                tipoLocal = scanner.nextLine();
+                tipoLocal =  scanner.nextLine();
                 controle = true;
 
             } catch (InputMismatchException e) {
