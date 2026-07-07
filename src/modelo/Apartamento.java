@@ -28,4 +28,13 @@ public class Apartamento extends Financiamento {
                 "\nQuantidade de parcelas : " + quantidadeParcelas() +
                 "\nValor total financiamento : " + String.format("%.2f", valorTotal()) + "\n");
     }
+
+    @Override
+    public String toString() {
+        return "Valor do apartamento: " + getValorImovel() + "\n"
+                + "Prazo: " + getPrazoFinanciamento() + " meses\n"
+                + "Taxa de Juros Anual: " + getTaxaJurosAnual() + "%\n"
+                + "Vagas garagem: " + vagasGaragem + " vaga(s)\n"
+                + "Andar: " + numeroAndar + " andar\n\n";
+    }
 }

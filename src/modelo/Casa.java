@@ -38,4 +38,13 @@ public class Casa extends Financiamento {
                 "\nQuantidade de parcelas : " + quantidadeParcelas() +
                 "\nValor total financiamento : " + String.format("%.2f", valorTotal()) + "\n");
     }
+
+    @Override
+    public String toString() {
+        return "Valor da casa: " + getValorImovel() + "\n"
+                + "Prazo: " + getPrazoFinanciamento() + " meses\n"
+                + "Taxa de Juros Anual: " + getTaxaJurosAnual() + "%\n"
+                + "Área Construída: " + areaConstruida + " m²\n"
+                + "Dimensão do Terreno: " + dimensaoTerreno + " m²\n\n";
+    }
 }
