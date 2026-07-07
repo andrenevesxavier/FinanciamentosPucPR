@@ -6,6 +6,7 @@ import modelo.Financiamento;
 import modelo.Terreno;
 import util.InterfaceUsuario;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -74,25 +75,89 @@ public class Main {
         financiamentos.add(new Apartamento(250000, 25, 9, 2, 6));
         financiamentos.add(new Apartamento(320000, 30, 11, 1, 3));
 
+        FileWriter fw = null;
 
-        int i = 1;
+        try {
+            fw = new FileWriter("financiamentos.txt");
 
-        System.out.println("-".repeat(25)+ "\nLista de financiamentos\n" + "-".repeat(25));
-        for (var f : financiamentos) {
-            System.out.println("Financiamento " + i + ": ");
-            f.exibirMensagem();
-            i++;
+            for (Financiamento financiamento : financiamentos) {
+                fw.write(financiamento.toString() + System.lineSeparator());
+            }
+
+            fw.flush();
+            fw.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        double somaImovel = 0;
-        double somaFinanciamento = 0;
+        FileReader fr = null;
 
-        for (var f : financiamentos) {
-            somaImovel += f.getValorImovel();
-            somaFinanciamento += f.valorTotal();
+        try {
+            fr = new FileReader("financiamentos.txt");
+            int c;
+
+            while ((c = fr.read()) != -1)
+                System.out.print((char)c);
+            fr.close();
+
+        }catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        System.out.println("Valor total dos imóveis: " + String.format("%.2f", somaImovel) +
-                "\nValor total dos financiamentos: " + String.format("%.2f", somaFinanciamento));
-    }
+
+        ObjectOutputStream outputStream = null;
+
+        try {
+            outputStream = new ObjectOutputStream(new FileOutputStream("financiamentos.test"));
+            outputStream.writeObject(financiamentos);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        ObjectInputStream inputStream = null;
+
+        try {
+            inputStream = new ObjectInputStream(new FileInputStream("financiamentos.test"));
+
+            ArrayList <Financiamento> financiamentosLidosArquivo = (ArrayList<Financiamento>) inputStream.readObject();
+
+            for (Financiamento financiamento : financiamentosLidosArquivo) {
+                System.out.println(financiamento);
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+//        int i = 1;
+//
+//        System.out.println("-".repeat(25)+ "\nLista de financiamentos\n" + "-".repeat(25));
+//        for (var f : financiamentos) {
+//            System.out.println("Financiamento " + i + ": ");
+//            f.exibirMensagem();
+//            i++;
+//        }
+//
+//        double somaImovel = 0;
+//        double somaFinanciamento = 0;
+//
+//        for (var f : financiamentos) {
+//            somaImovel += f.getValorImovel();
+//            somaFinanciamento += f.valorTotal();
+//        }
+//
+//        System.out.println("Valor total dos imóveis: " + String.format("%.2f", somaImovel) +
+//                "\nValor total dos financiamentos: " + String.format("%.2f", somaFinanciamento));
+   }
 }
